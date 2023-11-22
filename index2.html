@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+        }
+        canvas {
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tetris" width="300" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('tetris');
+        const context = canvas.getContext('2d');
+        const ROWS = 20;
+        const COLUMNS = 10;
+        const BLOCK_SIZE = 30;
+
+        // Tetris game logic goes here
+        const board = Array.from({ length: ROWS }, () => Array(COLUMNS).fill(''));
+
+        const pieces = {
+            // Define Tetris pieces here
+        };
+
+        function drawBoard() {
+            // Draw the game board here
+        }
+
+        function drawPiece(piece, offset) {
+            // Draw a Tetris piece here
+        }
+
+        function rotatePiece(piece) {
+            // Rotate a Tetris piece here
+        }
+
+        function movePieceLeft() {
+            // Move the current piece left
+        }
+
+        function movePieceRight() {
+            // Move the current piece right
+        }
+
+        function dropPiece() {
+            // Drop the current piece
+        }
+
+        function clearRows() {
+            // Clear completed rows
+        }
+
+        function gameOver() {
+            // Handle game over condition
+        }
+
+        // Tetris game rendering goes here
+
+        function draw() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBoard();
+            drawPiece(currentPiece, { x: currentX, y: currentY });
+        }
+
+        // Initialize the game board
+
+        // Start the game loop
+        let lastTime = 0;
+        let dropCounter = 0;
+        let currentPiece = getRandomPiece();
+        let currentX = 0;
+        let currentY = 0;
+
+        function update(time = 0) {
+            const deltaTime = time - lastTime;
+            lastTime = time;
+            dropCounter += deltaTime;
+
+            if (dropCounter > 1000) {
+                movePieceDown();
+            }
+
+            draw();
+            requestAnimationFrame(update);
+        }
+
+        update();
+
+        // Handle user input for controlling the game
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                movePieceLeft();
+            } else if (event.key === 'ArrowRight') {
+                movePieceRight();
+            } else if (event.key === 'ArrowDown') {
+                movePieceDown();
+            } else if (event.key === 'ArrowUp') {
+                rotatePiece();
+            }
+        });
+    </script>
+</body>
+</html>
